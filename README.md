@@ -1,6 +1,6 @@
 # ztagent
 oZTe agent
-
+![](Docs/imgs/scheme.jpg)
 
 Agent functionality 
 1) Register to Management server  - issue certificate, get policies.
