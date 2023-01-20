@@ -1,0 +1,8 @@
+- agents:
+   'aa':
+      key: asdasd
+      url: http://localhost
+   'bb':
+      key: asdasd
+      url: http://localhost
+

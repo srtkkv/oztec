@@ -1,5 +1,6 @@
 import argparse
 import os.path
+from Core.win_service import SMWinservice
 
 
 class installer():
@@ -46,11 +47,15 @@ class installer():
         else:
             pass
 
-class runner():
-    def __init__(self):
-        while True:
-            pass
-        pass
+class Server_mode_runner(SMWinservice):
+    def start(self) :
+        self.isrunning = True
+
+    def stop(self) :
+        self.isrunning = False
+
+    def main(self) :
+       pass
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser(
@@ -59,13 +64,13 @@ if __name__=="__main__":
                     epilog = 'Text at the bottom of help')
     parser.add_argument('-v', '--verbose',
                     action='store_true')
-    parser.add_argument('-s', '--service',
+    parser.add_argument('-si', '--service_install',
                         action='store_true')
     parser.add_argument('-sn', '--service_name', default="oZTeC service")
     parser.add_argument('-sf' , '--service_folder' , default=None)
     args = parser.parse_args()
-    print( args.service, args.verbose, args.service_name)
-    if args.service:
+    print( args.service_install, args.verbose, args.service_name)
+    if args.service_install:
         print(installer(args).install())
 
 
