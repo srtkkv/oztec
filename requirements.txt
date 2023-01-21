@@ -1,3 +1,5 @@
 pywin32
 SMWinservice
 pyyaml
+pyopenssl
+requests
