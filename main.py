@@ -1,6 +1,7 @@
 import argparse
 import os.path
-from Core.win_service import SMWinservice
+#from Core.win_service import SMWinservice
+from Core.oztec import OZTEC
 
 
 class installer():
@@ -46,7 +47,7 @@ class installer():
             return self.Windows_install()
         else:
             pass
-
+"""
 class Server_mode_runner(SMWinservice):
     def start(self) :
         self.isrunning = True
@@ -56,7 +57,7 @@ class Server_mode_runner(SMWinservice):
 
     def main(self) :
        pass
-
+"""
 if __name__=="__main__":
     parser = argparse.ArgumentParser(
                     prog = 'ProgramName',
@@ -68,10 +69,15 @@ if __name__=="__main__":
                         action='store_true')
     parser.add_argument('-sn', '--service_name', default="oZTeC service")
     parser.add_argument('-sf' , '--service_folder' , default=None)
+    parser.add_argument('-r', '--register', default=None, help="Register agent in oZTeS by --register URL")
+    parser.add_argument('-c', '--config', default=None, help="Specify config path.")
     args = parser.parse_args()
-    print( args.service_install, args.verbose, args.service_name)
+    print( args.service_install, args.verbose, args.service_name, args.register, args.config)
     if args.service_install:
         print(installer(args).install())
+    elif args.register is not None:
+        empty_agent = OZTEC(cfg=args.config).register_agent(URL=args.register)
+        pass
 
 
 

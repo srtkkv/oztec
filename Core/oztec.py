@@ -1,57 +1,42 @@
 import yaml
-from Core import cripto
-
+from Core import cripto, config
+import requests
 class OZTEC():
     '''
     This class describe the agent instance what works with oZteServer
     '''
     config = None
     cripto = None
-    def __init__(self,id=None,URL=None):
+    session = None
+    def __init__(self,id=None,cfg=None):
+        self.session = requests.session()
+        self.config = config.config(conf_path=cfg)
         if id is not None:
-            self._load_config(id=id)
-        elif URL is not None:
-            #initiate registration
-            self.register_agent(URL)
-            pass
-        else:
-            return None
+            if self.config.load_config(id=id) == None:
+                self.config.create()
 
-        pass
-
-    # TODO
     def register_agent(self,URL):
         '''
         This metod called then there is not available profile and need to initiate the regitration to the oZTeServer
         :return:
         '''
-        policy = self._get_ozres_userProfile(URL)
+        policy = self._oztes_agentProfile(URL)
+        print(policy)
+        # self.cripto = cripto.Cripto()
+        # self.cripto.create_CSR(profile=profile)
         pass
     def _init_cripto(self):
 
         pass
 
-    def _get_ozres_userProfile(self,URL):
-        import requests
-        resp = requests.get(URL)
+    def _oztes_agentProfile(self,URL,):
+        resp = self.session.get(URL)
         if resp.status_code == 200:
             #dict(self.config)[URL[-8:]]  # need to create new profile in config
-            profile = resp.json()
-            self.cripto = cripto.Cripto()
-            self.cripto.create_CSR(profile=profile)
+            return resp.text
+        else:
+            return None
 
-        pass
-
-    def _load_config(self,path='..\\config.yml', id=None):
-        with open(path) as f:
-            try :
-                self.config = yaml.safe_load(f)[0]
-            except yaml.YAMLError as exc :
-                #print(exc)
-                pass
-            print(self.config)
-            if id is not None:
-                self.config = self.config.get('agents').get(id)
 
         pass
     def _update_config(self):
