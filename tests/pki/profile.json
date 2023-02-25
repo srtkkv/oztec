@@ -1,0 +1,25 @@
+[
+  {
+    "name": "crypto",
+    "scope": "agent_config",
+    "configuration": {
+      "CA": {"cert": "-----BEGIN CERTIFICATE-----\nMIIDnzCCAoegAwIBAgIBADANBgkqhkiG9w0BAQsFADCBkjESMBAGA1UEAwwJbG9j\nYWxob3N0MRIwEAYDVQQKDAlvWlRlIFRlc3QxFjAUBgNVBAsMDUlUIERlcGFydG1l\nbnQxDTALBgNVBAcMBHRlc3QxDjAMBgNVBAgMBUthemFuMQswCQYDVQQGEwJSVTEk\nMCIGCSqGSIb3DQEJARYVa292YWxlbmtva3ZAZ21pYWwuY29tMB4XDTIzMDIyNDE2\nNDIxOVoXDTI0MDIyNDE2NDIxOVowgZIxEjAQBgNVBAMMCWxvY2FsaG9zdDESMBAG\nA1UECgwJb1pUZSBUZXN0MRYwFAYDVQQLDA1JVCBEZXBhcnRtZW50MQ0wCwYDVQQH\nDAR0ZXN0MQ4wDAYDVQQIDAVLYXphbjELMAkGA1UEBhMCUlUxJDAiBgkqhkiG9w0B\nCQEWFWtvdmFsZW5rb2t2QGdtaWFsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEP\nADCCAQoCggEBAMIHvVBWHe7q4RHG9l0oaSKB6vCmGfPxtSdhIaZSpuuzj/nEzs3+\ntlLuzffVSyko5vxinhIZcYX8xFAJiP/M8HxTwlajyoogiiwYtIYJcAugcZ+Pj4of\nfK8eGveOCsTbUxb80Mm15QGi0PxddNeZYluT0vQS1zZ4kjmp2P0FbtDNu6UGYgse\nEaXpoq+JXdvSL1KtPtEgZsdlbGxlmnoWVAT5KlBHKXABj3C3fxofB7TuXTZZC/pX\ngFYzMnZ8tNvIhN5G5DnhFnar2hMsHj7p0x+RFTf19PydorT09rUkfB5xtli5xCvD\nVyx4oOogaGguztm9gLx2ReKqH/bTLLylqkkCAwEAATANBgkqhkiG9w0BAQsFAAOC\nAQEAnGWAKC72RTGFyt+rUEQe0k6FKrOG8hvQ7c1WEEbBrG13oEu/jEyDHIlctqxI\npJPRCizWZLa860XEcTxmVfiYQo0iGdRBWtu+CJOzWuekZq2d2KMwl2QqK2u9+lPi\n6iSozziaEJF5BgvtxvKkYLg4kIO/gcwJ6u8XBq4xKovQaqsqWjRmpL25Hp/5fy4b\nKWEB660ZxfHCNxidgehS9e5/BwgmbwjSRMwneAjGCYXzSnPXQpnAzcIkmiSFlpRd\n1SHcnEKJheIXD9ACTVmjJTfb/+ODSioUWVqVyCoXLSYYaudnJemmGVrI6tricJZZ\nZtxydCrlICzmLcXLq+G0oP9qHg==\n-----END CERTIFICATE-----"},
+      "server": {"cert": "-----BEGIN CERTIFICATE-----\nMIIDnzCCAoegAwIBAgIBADANBgkqhkiG9w0BAQsFADCBkjESMBAGA1UEAwwJbG9j\nYWxob3N0MRIwEAYDVQQKDAlvWlRlIFRlc3QxFjAUBgNVBAsMDUlUIERlcGFydG1l\nbnQxDTALBgNVBAcMBHRlc3QxDjAMBgNVBAgMBUthemFuMQswCQYDVQQGEwJSVTEk\nMCIGCSqGSIb3DQEJARYVa292YWxlbmtva3ZAZ21pYWwuY29tMB4XDTIzMDIyNDE2\nNDIxOVoXDTI0MDIyNDE2NDIxOVowgZIxEjAQBgNVBAMMCWxvY2FsaG9zdDESMBAG\nA1UECgwJb1pUZSBUZXN0MRYwFAYDVQQLDA1JVCBEZXBhcnRtZW50MQ0wCwYDVQQH\nDAR0ZXN0MQ4wDAYDVQQIDAVLYXphbjELMAkGA1UEBhMCUlUxJDAiBgkqhkiG9w0B\nCQEWFWtvdmFsZW5rb2t2QGdtaWFsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEP\nADCCAQoCggEBAMIHvVBWHe7q4RHG9l0oaSKB6vCmGfPxtSdhIaZSpuuzj/nEzs3+\ntlLuzffVSyko5vxinhIZcYX8xFAJiP/M8HxTwlajyoogiiwYtIYJcAugcZ+Pj4of\nfK8eGveOCsTbUxb80Mm15QGi0PxddNeZYluT0vQS1zZ4kjmp2P0FbtDNu6UGYgse\nEaXpoq+JXdvSL1KtPtEgZsdlbGxlmnoWVAT5KlBHKXABj3C3fxofB7TuXTZZC/pX\ngFYzMnZ8tNvIhN5G5DnhFnar2hMsHj7p0x+RFTf19PydorT09rUkfB5xtli5xCvD\nVyx4oOogaGguztm9gLx2ReKqH/bTLLylqkkCAwEAATANBgkqhkiG9w0BAQsFAAOC\nAQEAnGWAKC72RTGFyt+rUEQe0k6FKrOG8hvQ7c1WEEbBrG13oEu/jEyDHIlctqxI\npJPRCizWZLa860XEcTxmVfiYQo0iGdRBWtu+CJOzWuekZq2d2KMwl2QqK2u9+lPi\n6iSozziaEJF5BgvtxvKkYLg4kIO/gcwJ6u8XBq4xKovQaqsqWjRmpL25Hp/5fy4b\nKWEB660ZxfHCNxidgehS9e5/BwgmbwjSRMwneAjGCYXzSnPXQpnAzcIkmiSFlpRd\n1SHcnEKJheIXD9ACTVmjJTfb/+ODSioUWVqVyCoXLSYYaudnJemmGVrI6tricJZZ\nZtxydCrlICzmLcXLq+G0oP9qHg==\n-----END CERTIFICATE-----"},
+      "agent": {
+        "key_profile": {
+          "key_lenght": 2048,
+          "key_type" : "RSA"},
+        "cert_profile": {
+          "emailAddress": "test1@k2v.site",
+          "commonName" : "test agent",
+          "countryName" : "ru",
+          "localityName": "RF",
+          "stateOrProvinceName" : "Tatarstan",
+          "organizationName": "oZTe Public",
+          "organizationUnitName" : "QA"
+
+        }
+      }
+    }
+  }
+]

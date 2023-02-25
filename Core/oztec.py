@@ -17,9 +17,14 @@ class OZTEC():
 
     def register_agent(self,URL):
         '''
+
         This metod called then there is not available profile and need to initiate the regitration to the oZTeServer
+
         :return:
+
         '''
+
+        #TODO Get oztes server profile and extract Cripto policy to generate the Agents Certificate
         policy = self._oztes_agentProfile(URL)
         print(policy)
         # self.cripto = cripto.Cripto()
@@ -32,7 +37,6 @@ class OZTEC():
     def _oztes_agentProfile(self,URL,):
         resp = self.session.get(URL)
         if resp.status_code == 200:
-            #dict(self.config)[URL[-8:]]  # need to create new profile in config
             return resp.text
         else:
             return None
