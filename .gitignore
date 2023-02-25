@@ -134,3 +134,4 @@ dmypy.json
 *.crt
 *.pem
 
+/tests/pki/
