@@ -1,5 +1,4 @@
-import yaml
-from Core import cripto, config
+from Core import config, crypto
 import requests
 class OZTEC():
     '''
@@ -46,11 +45,12 @@ class OZTEC():
     def _update_config(self):
         pass
 
+
 if __name__ == "__main__":
-    #oztec = OZTEC(id='aa')
-    #print(oztec.config)
-    #oztec.register_agent()
-    cr = cripto.Cripto()
-    cr.create_CSR(profile=None)
+    # oztec = OZTEC(id='aa')
+    # print(oztec.config)
+    # oztec.register_agent()
+    # cr = crypto.Crypto()
+    # cr.create_CSR(profile=None)
 
     pass
