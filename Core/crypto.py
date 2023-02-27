@@ -16,7 +16,7 @@ This class is working with crypro sub system ozte environment.
 #
 """
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes
 from cryptography import x509
 
@@ -24,11 +24,11 @@ import json
 
 
 class Crypto():
-    key = None
-    cert = None
-    config = None
-    CA_crt = None
-    server_crt = None
+    key: rsa.RSAPrivateKey = None
+    cert: x509.Certificate = None
+    config: dict = None
+    CA_crt: x509.Certificate = None
+    server_crt: x509.Certificate = None
     sign_type = None
 
     def __init__(self, config: dict):
@@ -37,7 +37,7 @@ class Crypto():
         # load cert, in case if exists
 
         if keys.get('cert') != None:
-            self.cert = x509.load_pem_x509_certificates(bytes(keys.get('cert'), "utf-8"))
+            self.cert = x509.load_pem_x509_certificate(bytes(keys.get('cert'), "utf-8"))
 
         # Load priv Key from confg
         if keys.get('private') != None:
@@ -46,11 +46,11 @@ class Crypto():
             self._create_private()
         # load CA cert
         if self.config['configuration']['CA'].get("cert") != None:
-            self.CA_crt = x509.load_pem_x509_certificates(
+            self.CA_crt = x509.load_pem_x509_certificate(
                 bytes(self.config['configuration']['CA'].get("cert"), "utf-8"))
         # load Server cert
         if self.config['configuration']['server'].get("cert") != None:
-            self.server_crt = x509.load_pem_x509_certificates(
+            self.server_crt = x509.load_pem_x509_certificate(
                 bytes(self.config['configuration']['server'].get("cert"), "utf-8"))
         self.sign_type = self.config['configuration']['agent']['key_profile'].get('sign_type')
         self.sign_type = self.sign_type if self.sign_type != None else "sha256"
@@ -145,13 +145,28 @@ class Crypto():
             json.dump(self.config, file)
         pass
 
+    def encrypt(self, message: str, public_key=None) -> str:
+        if isinstance(public_key, rsa.RSAPublicKey):
+            return public_key.encrypt(bytes(message, "utf-8"),
+                                      padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                                                   algorithm=hashes.SHA256(), label=None))
+        else:
+            return self.server_crt.public_key().encrypt(bytes(message, "utf-8"),
+                                                        padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                                                                     algorithm=hashes.SHA256(), label=None))
+
+    def decrypt(self, enc_message: bytes):
+        return self.key.decrypt(enc_message,
+                                padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()), algorithm=hashes.SHA256(),
+                                             label=None)).decode("utf-8")
+
 
 if __name__ == '__main__':
     with open('../tests/artifacts/criptografy_conf.json', 'r') as cripto_cfg:
         profile = json.load(cripto_cfg)
     cript = Crypto(profile)
-    print(cript.create_CSR())
-    print(cript.config)
+    enc = cript.encrypt("asd", public_key=cript.cert.public_key())
+    print(cript.decrypt(enc))
     # cript.create_CSR()
     # cript._export_config()
     # cript._issue_cert()
